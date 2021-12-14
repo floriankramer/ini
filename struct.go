@@ -689,9 +689,6 @@ func (s *Section) ReflectFrom(v interface{}) error {
 
 	if s.name != DefaultSection && s.f.options.AllowNonUniqueSections &&
 		(typ.Kind() == reflect.Slice || typ.Kind() == reflect.Ptr) {
-		// Clear sections to make sure none exists before adding the new ones
-		s.f.DeleteSection(s.name)
-
 		if typ.Kind() == reflect.Ptr {
 			sec, err := s.f.NewSection(s.name)
 			if err != nil {
